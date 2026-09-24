@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183f35"><title>Amara — A clearer way home</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23183f35'/%3E%3Cpath d='M10 28L20 10l10 18M15 22h10' fill='none' stroke='%23d9ef96' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
+  <link href="/vendor/map-engine.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/calm.css">
+  <script src="/vendor/map-engine.js" defer></script>
+  <script src="/vendor/motion.js" defer></script>
+  <script src="/raster-map.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#panel">Skip to briefing</a>
+  <div class="app-shell">
+    <aside class="rail" aria-label="Main navigation">
+      <a href="#/overview" class="brand-symbol" aria-label="Amara home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 29 20 10l11 19M14 23h12"/></svg></a>
+      <nav id="navigation"></nav>
+      <div class="rail-bottom"><button class="rail-link" data-action="open-help" aria-label="About this preview" data-tooltip="About Amara"><span data-icon="help"></span></button><span class="avatar small">A</span></div>
+    </aside>
+    <header class="topbar">
+      <a class="wordmark" href="#/overview">amara<span class="brand-dot">.</span></a><span class="tagline">A clearer way home.</span>
+      <div class="header-right"><button class="preview-tools-button" data-action="open-preview" aria-haspopup="dialog"><span class="dot"></span> Mock preview <span data-icon="settings"></span></button><button class="location-pill" data-action="area"><span data-icon="pin"></span><span id="area-label">Yaba, Lagos</span><span data-icon="chevron"></span></button><span class="avatar">A</span></div>
+    </header>
+    <main class="workspace">
+      <section class="briefing-panel" id="panel" tabindex="-1" aria-label="Your local briefing"></section>
+      <section class="map-panel" aria-label="3D neighbourhood map">
+        <div class="illustrated-map" id="map-fallback" aria-hidden="true"><svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice"><defs><pattern id="blocks" width="130" height="105" patternTransform="rotate(-22)" patternUnits="userSpaceOnUse"><rect width="130" height="105" fill="#e8eadf"/><rect x="12" y="13" width="90" height="66" rx="3" fill="#d6d9cc" stroke="#fafbf5" stroke-width="5"/><path d="M18 20h77v14H18z" fill="#c4cbbc"/><path d="M0 98h130M119 0v105" stroke="#fafaf5" stroke-width="12"/></pattern></defs><rect width="1000" height="1000" fill="url(#blocks)"/><path d="M-20 750C150 650 220 680 330 570S420 350 610 300 850 170 1080 110" fill="none" stroke="#d1dcbf" stroke-width="100"/><path d="M-20 750C150 650 220 680 330 570S420 350 610 300 850 170 1080 110" fill="none" stroke="#fffef5" stroke-width="34"/><path d="m275 735 80-180 175-130 170-260" fill="none" stroke="#335b4a" stroke-width="9" stroke-dasharray="16 8"/><circle cx="275" cy="735" r="15" fill="#385ed4" stroke="white" stroke-width="7"/><circle cx="700" cy="165" r="13" fill="#183f35" stroke="white" stroke-width="5"/><text x="570" y="535" font-size="26" letter-spacing="8" fill="#929c87">YABA</text></svg></div>
+        <div id="map"></div>
+        <div id="raster-map" hidden></div>
+        <div id="map-problem" hidden role="status"></div>
+        <div class="map-heading"><div class="map-location"><span data-icon="pin"></span> YOUR NEIGHBOURHOOD <span class="map-type" id="view-type">3D</span></div></div>
+        <div id="map-notice" class="map-notice" role="status" data-load-state="loading">Loading 3D map · fictional reports</div>
+        <div class="map-controls"><button data-action="zoom-in" aria-label="Zoom in"><span data-icon="plus"></span></button><button data-action="zoom-out" aria-label="Zoom out"><span data-icon="minus"></span></button><span></span><button data-action="toggle-3d" id="dimension-button" aria-label="Switch to 2D map">3D</button><button data-action="recenter" aria-label="Recenter map"><span data-icon="locate"></span></button></div>
+        <div id="map-callout"></div>
+        <div id="journey-floating"></div>
+        <div class="map-bottom"><button class="explore-3d" data-action="explore-3d"><span data-icon="layers"></span>Explore 3D</button><details class="map-key"><summary>Map key <span data-icon="chevron"></span></summary><div class="map-legend"><span><i class="legend-dot amber"></i>Unconfirmed</span><span><i class="legend-dot teal"></i>Corroborated</span><span><i class="legend-dot blue"></i>Simulated position</span></div></details></div>
+        <button class="mobile-panel-toggle" data-action="toggle-panel"><span data-icon="list"></span> <span id="panel-toggle-label">Show map</span></button>
+      </section>
+    </main>
+  </div>
+  <dialog id="preview-tools" aria-labelledby="preview-title">
+    <div class="modal-header"><h2 id="preview-title">Explore the preview</h2><button class="close-small" data-action="close-preview" aria-label="Close preview tools"><span data-icon="close"></span></button></div>
+    <p class="modal-copy">Try the experience at your own pace. Reports, route estimates, AI summaries, and movement are fictional.</p>
+    <div class="preview-controls"><label for="scenario">Preview state</label><select id="scenario"><option value="normal">Everyday view</option><option value="welcome">First visit</option><option value="empty">No reports</option><option value="unfollowed">No followed roads</option><option value="stale">Stale information</option><option value="offline">Offline</option><option value="gps">Location unavailable</option><option value="route-error">Route unavailable</option><option value="unresolved">Unclear location</option><option value="coverage">No area coverage</option><option value="map-error">Map unavailable</option><option value="loading">Loading briefing</option><option value="conflict">Conflicting evidence</option><option value="confirmed">Named confirmation</option></select></div>
+    <div class="preview-actions"><button class="secondary-button" data-action="advance"><span data-icon="spark"></span>New evidence</button><button class="secondary-button" data-action="reset"><span data-icon="refresh"></span>Reset demo</button></div>
+    <p class="fine-print">Scenario clock · 22 Sep 2026, 6:40 PM WAT</p>
+  </dialog>
+  <dialog id="modal" aria-labelledby="modal-title"><div id="modal-body"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body></html>

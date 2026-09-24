@@ -1,0 +1,42 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#183f35"><meta name="description" content="Amara helps you inspect timely, source-linked reports around your route.">
+  <title>{{ title }} · Amara</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23183f35'/%3E%3Cpath d='M10 28L20 10l10 18M15 22h10' fill='none' stroke='%23d9ef96' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="{% static 'vendor/mapbox-gl.css' %}">
+  <link rel="stylesheet" href="{% static 'build/app.css' %}">
+  <script src="{% static 'vendor/gsap.min.js' %}" defer></script>
+  <script src="{% static 'build/raster-map.js' %}" defer></script>
+  <script src="{% static 'build/geo.js' %}" defer></script>
+  <script src="{% static 'build/http.js' %}" defer></script>
+  <script src="{% static 'build/panel.js' %}" defer></script>
+  <script src="{% static 'build/demo-player.js' %}" defer></script>
+  <script src="{% static 'build/location.js' %}" defer></script>
+  <script src="{% static 'build/map.js' %}" defer></script>
+  <script src="{% static 'build/journey.js' %}" defer></script>
+  <script src="{% static 'build/evidence.js' %}" defer></script>
+  <script src="{% static 'build/app.js' %}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#panel">Skip to briefing</a>
+  <div class="app-shell">
+    <aside class="rail" aria-label="Main navigation">
+      <a href="{% url 'overview' %}" data-panel class="brand-symbol" aria-label="Amara home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 29 20 10l11 19M14 23h12"/></svg></a>
+      {% include 'components/nav.html' %}
+      <div class="rail-bottom"><button class="rail-link" data-action="about" aria-label="About Amara">{% include 'components/icon.html' with name='help' %}</button><span class="avatar small">A</span></div>
+    </aside>
+    <header class="topbar"><a class="wordmark" href="{% url 'overview' %}" data-panel>amara<span class="brand-dot">.</span></a><span class="tagline">A clearer way home.</span><div class="header-right"><a class="preview-tools-button" href="{% url 'evidence' %}" data-panel>Check reports</a><button class="preview-tools-button" data-action="about"><span class="dot"></span><span id="data-mode-label">{% if demo_enabled %}Demo data{% else %}Public sources{% endif %}</span></button><span class="location-pill">{% include 'components/icon.html' with name='pin' %}Yaba, Lagos</span><span class="avatar">A</span></div></header>
+    <main class="workspace" data-screen="{{ section }}">
+      <section id="panel" class="briefing-panel" tabindex="-1" aria-label="Your local briefing">{% include panel_template %}</section>
+      {% include 'components/map.html' %}
+    </main>
+  </div>
+  {{ app_config|json_script:'app-config' }}
+  {{ map_state|json_script:'map-state' }}
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-header"><h2 id="modal-title"></h2><button class="close-small" data-action="close-modal" aria-label="Close dialog">{% include 'components/icon.html' with name='close' %}</button></div><div id="modal-content"></div></dialog>
+  <div id="app-message" class="app-error" role="status" hidden></div>
+  <div id="evidence-progress" class="evidence-progress" role="status" hidden></div>
+</body>
+</html>

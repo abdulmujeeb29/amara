@@ -1,0 +1,57 @@
+<section id="journey-setup">
+  <a class="back-link" href="{% url 'overview' %}" data-panel>{% include 'components/icon.html' with name='back' %}Overview</a>
+  <div class="journey-intro"><span class="step-label">A journey you can demonstrate</span><h1>See Amara in action.</h1></div>
+  <div class="presenter-entry"><p>Watch Amara travel home. Reports arrive, move through checking, and reveal their saved AI results as she goes.</p><button type="button" class="primary-button" data-journey="laptop-demo">Start the journey {% include 'components/icon.html' with name='arrow' %}</button><small>Demo replay · saved route and genuine AI results · no live analysis calls</small></div>
+  <details id="custom-route" class="custom-route" {% if form.errors %}open{% endif %}><summary>Or plan your own route</summary>
+  <form id="journey-planner" data-journey-form>{% csrf_token %}
+    <div class="place-field">
+      <div class="place-label"><label for="origin">Starting point</label><button type="button" class="text-link" data-journey="locate">{% include 'components/icon.html' with name='locate' %}Use my location</button></div>
+      <input id="origin" data-place="origin" class="place-input" placeholder="e.g. Yaba or Herbert Macaulay Way" autocomplete="off" maxlength="160" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="origin-options" aria-describedby="origin-feedback">
+      <ul id="origin-options" class="place-results" role="listbox" aria-label="Starting point results" hidden></ul>
+      <p id="origin-feedback" class="place-feedback" role="status"></p>
+      <button type="button" class="text-link place-pick" data-journey="pick-origin">Pick on map</button>
+    </div>
+    <div class="place-field">
+      <label class="block text-xs font-semibold mb-2" for="destination">Destination</label>
+      <input id="destination" data-place="destination" class="place-input" value="{{ destination }}" placeholder="e.g. Alagomeji" autocomplete="off" maxlength="160" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="destination-options" aria-describedby="destination-feedback">
+      <ul id="destination-options" class="place-results" role="listbox" aria-label="Destination results" hidden></ul>
+      <p id="destination-feedback" class="place-feedback" role="status"></p>
+      <button type="button" class="text-link place-pick" data-journey="pick-destination">Pick on map</button>{{ form.destination.errors }}
+    </div>
+    <div class="journey-mode-label" id="mode-label">How are you travelling?</div>
+    <div class="segmented mode-options" role="group" aria-labelledby="mode-label">
+      <label><input type="radio" name="mode" value="walking" {% if mode == 'walking' %}checked{% endif %}><span>{% include 'components/icon.html' with name='walk' %}Walking</span></label>
+      <label><input type="radio" name="mode" value="driving" {% if mode == 'driving' %}checked{% endif %}><span>{% include 'components/icon.html' with name='car' %}Driving</span></label>
+    </div>{{ form.mode.errors }}{{ form.step.errors }}
+    <p id="planner-status" class="planner-status" role="status"></p>
+    <button class="primary-button journey-primary" type="submit" disabled id="review-route">Review my route {% include 'components/icon.html' with name='arrow' %}</button>
+  </form>
+  <button type="button" class="quiet-link" data-journey="sample">Try a sample Yaba → Alagomeji route</button>
+  </details>
+  <p id="demo-launch-status" class="planner-status" role="status"></p>
+  <p class="fine-print">The demo uses saved data. Custom route planning uses Mapbox; location is requested only when you choose to share it.</p>
+  <noscript><p class="status-banner">Interactive route search needs JavaScript. Incident briefings and source links are still readable.</p></noscript>
+</section>
+<section id="journey-review" hidden>
+  <button class="back-link" data-journey="edit">{% include 'components/icon.html' with name='back' %}Edit route</button>
+  <div class="journey-intro"><span class="step-label" id="journey-stage">2 of 2 · Before you go</span><h1 id="journey-heading">Your route.</h1></div>
+  <div class="trip-at-a-glance"><div><strong><span id="route-minutes"></span><small> min</small></strong><span id="route-distance"></span></div><span class="trip-destination">{% include 'components/icon.html' with name='home' %}<span id="route-destination"></span></span></div>
+  <div class="segmented mode-options mt-4" role="group" aria-label="Change travel mode">
+    <label><input type="radio" name="review-mode" value="walking"><span>{% include 'components/icon.html' with name='walk' %}Walking</span></label>
+    <label><input type="radio" name="review-mode" value="driving"><span>{% include 'components/icon.html' with name='car' %}Driving</span></label>
+  </div>
+  <p id="route-status" class="planner-status" role="status"></p>
+  <div id="gps-status" class="gps-status" role="status" hidden></div>
+  <div id="demo-progress" class="demo-progress" hidden><div><span>Demo progress</span><span id="demo-progress-time">00:00 / 01:20</span></div><div class="demo-progress-track" role="progressbar" aria-label="Demonstration progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div></div>
+  <div id="route-reports" class="journey-report"></div>
+  {% if preference.active_demo_case_id %}<details class="journey-demo ai-journey-tools"><summary>Add evidence while the journey plays</summary><p>These fictional inputs go through the real AI pipeline. Results arrive as evidence updates, independently of the movement animation.</p><div class="evidence-stage-actions"><button type="button" class="secondary-button" data-evidence="support">Add independent reports</button><button type="button" class="secondary-button" data-evidence="conflict">Add conflicting report</button><button type="button" class="text-link" data-evidence="reanalyze">Recheck unchanged evidence</button></div></details>{% endif %}
+  <div class="journey-actions">
+    <button class="primary-button journey-primary" data-journey="start-demo">Start guided demo {% include 'components/icon.html' with name='navigation' %}</button>
+    <button class="secondary-button w-full mt-3" data-journey="resume" hidden>Resume location</button>
+    <button class="secondary-button w-full mt-3" data-journey="replan" hidden>Update route from my location</button>
+    <button class="primary-button journey-primary" data-journey="end" hidden>End journey</button>
+    <div class="demo-playback" hidden><button class="secondary-button" data-journey="toggle-demo">Pause</button><button class="text-link" data-journey="advance-demo">Next update →</button><button class="text-link" data-journey="replay-demo">Replay</button></div>
+  </div>
+  <details class="journey-demo live-location-options"><summary>Use my real GPS instead</summary><p>The guided demo works entirely on your laptop, with scripted movement and route-deviation detection. Real GPS requests browser permission and works while this page is active.</p><button class="secondary-button" data-journey="start-live">Start live journey</button></details>
+  <p class="fine-print">Demo replay shows prepared AI results after a 3.5-second replay interval. It is not a live inference-speed claim or a road-safety guarantee.</p>
+</section>

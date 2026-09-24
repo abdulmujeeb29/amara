@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+<symbol id="route" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="19" r="2"/><path d="M6 7v7a4 4 0 0 0 4 4h1m7-1V9a4 4 0 0 0-4-4h-1"/></symbol>
+<symbol id="bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+<symbol id="bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></symbol>
+<symbol id="settings" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="16" cy="17" r="3"/></symbol>
+<symbol id="help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1.5 1-1.5 1-1.5 3m0 3h.01"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
+<symbol id="chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="back" viewBox="0 0 24 24"><path d="M20 12H4m6-6-6 6 6 6"/></symbol>
+<symbol id="sun" viewBox="0 0 24 24"><path d="M3 17h18M6 13a6 6 0 0 1 12 0M12 2v3M4 5l2 2m14-2-2 2M2 11h2m16 0h2"/></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7"/></symbol>
+<symbol id="car" viewBox="0 0 24 24"><path d="m4 10 2-6h12l2 6M3 10h18v8H3zm2 8v3m14-3v3M6 14h2m8 0h2"/></symbol>
+<symbol id="walk" viewBox="0 0 24 24"><circle cx="14" cy="4" r="2"/><path d="m7 11 4-4 4 2 2 4h3M11 8l-2 7-4 6m5-7 5 2 1 5"/></symbol>
+<symbol id="alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2zM12 9v5m0 3h.01"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-5"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+<symbol id="locate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/><circle cx="12" cy="12" r="1"/></symbol>
+<symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="external" viewBox="0 0 24 24"><path d="M14 3h7v7m0-7L10 14M9 3H3v18h18v-6"/></symbol>
+<symbol id="navigation" viewBox="0 0 24 24"><path d="m12 3 8 18-8-5-8 5z"/></symbol>
+<symbol id="layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8zm-10 9 10 5 10-5M2 16l10 5 10-5"/></symbol>
+</defs></svg>

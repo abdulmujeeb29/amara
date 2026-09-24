@@ -1,0 +1,16 @@
+<a class="back-link" href="{% url 'journey' %}" data-panel>{% include 'components/icon.html' with name='back' %}Back to journey</a>
+<div class="eyebrow">DEMO REPLAY · SAVED SCENARIO</div>
+<h1>{{ saved_result.incident.title }}</h1>
+{% if replay_state == 'reviewed' %}
+<span class="badge {{ saved_result.incident.status }} mt-4">AI-reviewed · {{ saved_result.incident.status_label }}</span>
+<div class="evidence-note">This is a saved, genuinely generated AI result, replayed for the demonstration. It was prepared {{ prepared_at|date:'j M Y, g:i A' }} WAT using {{ saved_result.model }}. No live inference runs during playback.</div>
+<section class="evidence-section"><h2 class="text-sm font-bold mb-2">What the AI found</h2>{% for statement in statements %}<p>{{ statement.text }}</p><div class="claim-citations">{% for source in statement.sources %}<a href="#source-{{ source.id }}">{{ source.source_name }}</a>{% endfor %}</div>{% endfor %}</section>
+<section class="evidence-section"><h2 class="text-sm font-bold mb-2">What remains uncertain</h2><p>{{ saved_result.incident.uncertainty }}</p></section>
+{% else %}
+<span class="badge neutral mt-4">{% if replay_state == 'checking' %}Checking sources{% else %}Received · not yet reviewed{% endif %}</span>
+<p class="greeting-sub">{{ event.received_text }}</p>
+<div class="evidence-note">You paused before the review result appears in the replay. Continue the journey to see the saved AI result at the scheduled point.</div>
+{% endif %}
+<div class="section-heading"><h2>Original fictional reports</h2></div>
+{% for source in sources %}<article id="source-{{ source.id }}" class="replay-source"><h3>{{ source.source_name }}</h3><p class="quiet-caption">{{ source.relationship }}</p><blockquote class="source-original">{{ source.original_text }}</blockquote></article>{% endfor %}
+<p class="fine-print">The reports are fictional inputs. Their AI analysis and the map route were prepared and saved before this replay.</p>

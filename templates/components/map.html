@@ -1,0 +1,12 @@
+<section class="map-panel" aria-label="Neighbourhood map" data-state="loading">
+  <div class="map-placeholder"></div><div id="map"></div><div id="raster-map" hidden></div>
+  <div id="map-status" class="map-status-card" role="status"><h2>Opening your map</h2><p>Your briefing is ready to read while the map loads.</p></div>
+  <div class="map-heading"><div class="map-location">{% include 'components/icon.html' with name='pin' %}YOUR NEIGHBOURHOOD<span id="map-mode" class="map-type">Loading</span></div></div>
+  <div id="demo-map-hud" class="demo-map-hud" hidden><span class="demo-moving-dot"></span><div><strong id="demo-map-state">Amara is moving</strong><small>SIMULATION · <span id="demo-map-time">00:00 / 01:20</span></small></div></div>
+  <aside id="journey-event" class="journey-event" role="status" aria-live="polite" aria-atomic="true" hidden></aside>
+  <div class="map-controls"><button data-map="in" aria-label="Zoom in">{% include 'components/icon.html' with name='plus' %}</button><button data-map="out" aria-label="Zoom out">{% include 'components/icon.html' with name='minus' %}</button><span></span><button data-map="dimension" aria-label="Toggle map perspective">3D</button><button data-map="recenter" aria-label="Recenter map">{% include 'components/icon.html' with name='locate' %}</button></div>
+  <div class="map-bottom"><button class="explore-3d" data-map="explore">{% include 'components/icon.html' with name='layers' %}Explore 3D</button><details class="map-key"><summary>Map key {% include 'components/icon.html' with name='chevron' %}</summary><div class="map-legend"><span><i class="legend-dot amber"></i>Reported incident</span><span><i class="legend-dot blue"></i>Simulated position</span></div></details></div>
+  <div id="map-notice" class="map-notice" role="status">Map loading</div>
+  <button class="map-sim-end" data-action="end-journey" hidden>End journey</button>
+  <button class="mobile-panel-toggle" data-action="toggle-panel" aria-controls="panel" aria-expanded="true">{% include 'components/icon.html' with name='layers' %}<span>Show map</span></button>
+</section>

@@ -1,0 +1,7 @@
+<nav id="navigation">
+  <a class="rail-link {% if section == 'overview' or section == 'incident' %}active{% endif %}" href="{% url 'overview' %}" data-panel data-nav="overview" aria-label="Overview">{% include 'components/icon.html' with name='grid' %}<span class="nav-label">Overview</span></a>
+  <a class="rail-link {% if section == 'journey' %}active{% endif %}" href="{% url 'journey' %}" data-panel data-nav="journey" aria-label="My journey">{% include 'components/icon.html' with name='route' %}<span class="nav-label">My journey</span></a>
+  <a class="rail-link {% if section == 'updates' %}active{% endif %}" href="{% url 'updates' %}" data-panel data-nav="updates" aria-label="Updates">{% include 'components/icon.html' with name='bell' %}<span class="nav-label">Updates</span></a>
+  <a class="rail-link {% if section == 'following' %}active{% endif %}" href="{% url 'following' %}" data-panel data-nav="following" aria-label="Following">{% include 'components/icon.html' with name='bookmark' %}<span class="nav-label">Following</span></a>
+  <a class="rail-link {% if section == 'settings' %}active{% endif %}" href="{% url 'settings' %}" data-panel data-nav="settings" aria-label="Settings">{% include 'components/icon.html' with name='settings' %}<span class="nav-label">Settings</span></a>
+</nav>

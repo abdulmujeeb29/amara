@@ -1,0 +1,19 @@
+{
+  "name": "amara-assets",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "node scripts/build-assets.mjs && tailwindcss -i frontend/styles/app.css -o static/build/app.css --minify",
+    "check": "node --check frontend/js/app.js && node --check frontend/js/map.js && node --check frontend/js/journey.js && node --check frontend/js/evidence.js && node --check frontend/js/demo-player.js && node --check frontend/js/location.js && node --check frontend/js/geo.js && node --check frontend/js/http.js && node --check frontend/js/panel.js && node --check design/preview/raster-map.js",
+    "test": "node --test frontend/tests/*.test.cjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "5.3.0",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@tailwindcss/cli": "4.3.3",
+    "gsap": "3.12.5",
+    "mapbox-gl": "3.15.0",
+    "mapbox-gl-compat": "npm:mapbox-gl@2.15.0",
+    "tailwindcss": "4.3.3"
+  }
+}

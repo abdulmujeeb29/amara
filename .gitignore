@@ -1,0 +1,26 @@
+# Local credentials; retain the shareable configuration template.
+.env
+.env.*
+!.env.example
+
+# Local project notes and review artifacts.
+/docs/
+
+# Python and local development artifacts.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.sqlite3
+*.sqlite3-journal
+
+# Generated frontend/static artifacts.
+node_modules/
+staticfiles/
+static/build/
+static/vendor/
+.coverage
+htmlcov/
+.DS_Store

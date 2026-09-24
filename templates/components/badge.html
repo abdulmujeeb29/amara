@@ -1,0 +1,1 @@
+<span class="badge {% if incident.status != 'unconfirmed' %}{{ incident.status }}{% endif %}">{% if incident.status == 'unconfirmed' %}{% include 'components/icon.html' with name='alert' %}{% else %}{% include 'components/icon.html' with name='shield' %}{% endif %}{{ incident.status_label }}</span>
